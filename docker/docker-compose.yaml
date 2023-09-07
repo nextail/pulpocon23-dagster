@@ -1,0 +1,113 @@
+version: "3.9"
+
+services:
+  # This service runs the postgres DB used by dagster for run storage and event log storage.
+  postgres_db:
+    image: postgres:11
+    container_name: postgres_db
+    volumes:
+      - ./postgres/initdb.d:/docker-entrypoint-initdb.d
+      - pulpocon2023-db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres_user
+      POSTGRES_PASSWORD: postgres_password
+    ports:
+      - "5432:5432"
+    networks:
+      - pulponet
+
+  # This service runs dagster_webserver, which loads your user code from the user code container.
+  dagster_webserver:
+    build:
+      context: ./..
+      dockerfile: docker/dagster/Dockerfile
+      target: srv
+    working_dir: /opt/dagster
+    platform: linux/amd64
+    image: pulpocon23-dagster:webserver
+    container_name: dagster_webserver
+    restart: on-failure
+    entrypoint:
+      - dagster-webserver
+      - -h
+      - "0.0.0.0"
+      - -p
+      - "3000"
+      - -w
+      - workspace.yaml
+    environment:
+      POSTGRES_HOST: postgres_db
+      POSTGRES_DB: workshop_assets
+      POSTGRES_USER: postgres_user
+      POSTGRES_PASSWORD: postgres_password
+      CODESPACE_NAME:
+    ports:
+      - "3000:3000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ../pulpocon23_dagster:/opt/pulpocon23-dagster/pulpocon23_dagster
+      - ../data:/opt/dagster/data
+      - ./localstack/credentials:/root/.aws/credentials
+    depends_on:
+      - postgres_db
+    networks:
+      - pulponet
+
+   # This service runs the dagster-daemon process, which is responsible for taking runs
+  # off of the queue and launching them, as well as creating runs from schedules or sensors.
+  dagster_daemon:
+    build:
+      context: ./..
+      dockerfile: docker/dagster/Dockerfile
+      target: srv
+    working_dir: /opt/dagster
+    platform: linux/amd64
+    image: pulpocon23-dagster:daemon
+    container_name: dagster_daemon
+    restart: on-failure
+    entrypoint:
+      - dagster-daemon
+      - run
+    environment:
+      POSTGRES_HOST: postgres_db
+      POSTGRES_DB: workshop_assets
+      POSTGRES_USER: postgres_user
+      POSTGRES_PASSWORD: postgres_password
+      CODESPACE_NAME:
+    ports:
+      - "5679:5678"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ../pulpocon23_dagster:/opt/pulpocon23-dagster/pulpocon23_dagster
+      - ../data:/opt/dagster/data
+      - ./localstack/credentials:/root/.aws/credentials
+    depends_on:
+      - postgres_db
+    networks:
+      - pulponet
+
+  # This service runs localstack, a cloud service emulator that runs in a single container on your
+  # laptop. With LocalStack, you can run your AWS applications like AWS S3.
+  localstack:
+    image: localstack/localstack:2.2.0
+    container_name: s3_localstack
+    ports:
+      - "4566:4566"
+    environment:
+      HOSTNAME: localhost
+      SERVICES: s3
+      AWS_ACCESS_KEY_ID: test
+      AWS_SECRET_ACCESS_KEY: test
+      DOCKER_HOST: unix:///var/run/docker.sock
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./localstack/init-s3.sh:/etc/localstack/init/ready.d/init-s3.sh
+    networks:
+      - pulponet
+
+volumes:
+  pulpocon2023-db:
+networks:
+  pulponet:
+    driver: bridge
+    name: pulponet

@@ -1,0 +1,13 @@
+load_from:
+  - python_module:
+      location_name: "chapter 1: dagster's basics"
+      module_name: pulpocon23_dagster.chapter_1
+      working_directory: /opt/pulpocon23-dagster
+  - python_module:
+      location_name: "chapter 2: retailer's kpis"
+      module_name: pulpocon23_dagster.chapter_2
+      working_directory: /opt/pulpocon23-dagster
+  - python_module:
+      location_name: "chapter 2 original"
+      module_name: pulpocon23_dagster.chapter_2_original
+      working_directory: /opt/pulpocon23-dagster

@@ -1,0 +1,111 @@
+{
+    "name": "pulpocon23-dagster",
+    "workspaceFolder": "/opt/pulpocon23-dagster",
+    "dockerComposeFile": "docker-compose.yml",
+    "remoteEnv": {
+        "LOCAL_WORKSPACE_FOLDER": "/opt/pulpocon23-dagster"
+    },
+    "service": "dev",
+    "runServices": [
+        "dev"
+    ],
+    "postCreateCommand": [
+        ".devcontainer/postCreateCommand.sh"
+    ],
+    "updateRemoteUserUID": true,
+    "overrideCommand": false,
+    "shutdownAction": "stopCompose",
+    "features": {
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+    },
+    "forwardPorts": [
+        3000,
+        4566,
+        5432
+    ],
+    "portsAttributes": {
+        "3000": {
+            "label": "dagster_webserver",
+            "onAutoForward": "notify"
+        },
+        "4566": {
+            "label": "s3_localstack",
+            "onAutoForward": "notify",
+            "visibility": "public"
+        },
+        "5432": {
+            "label": "postgres_db",
+            "onAutoForward": "notify"
+        }
+    },
+    "hostRequirements": {
+        "cpus": 4,
+        "memory": "8gb",
+        "storage": "32gb"
+    },
+    "customizations": {
+        // Configure properties specific to VS Code.
+        "vscode": {
+            // Set *default* container specific settings.json values on container create.
+            "settings": {
+                "sqltools.useNodeRuntime": false,
+                /* editor base settings */
+                "editor.detectIndentation": false,
+                "editor.rulers": [
+                    120
+                ],
+                "files.associations": {
+                    ".yamllint": "yaml",
+                    ".sqlfluffignore": "plaintext"
+                },
+                "python.defaultInterpreterPath": "/usr/local/bin/python",
+                /* python */
+                "python.autoComplete.extraPaths": [
+                    "${workspaceFolder}/pulpocon23_dagster",
+                    "/usr/python/__pypackages__/3.10/lib"
+                ],
+                "python.analysis.extraPaths": [
+                    "${workspaceFolder}/pulpocon23_dagster",
+                    "/usr/python/__pypackages__/3.10/lib"
+                ],
+                "python.testing.pytestEnabled": true,
+                "python.testing.pytestArgs": [
+                    "pulpocon23_dagster"
+                ],
+                "sqltools.connections": [
+                    {
+                        "previewLimit": 50,
+                        "server": "127.0.0.1",
+                        "port": 5432,
+                        "driver": "PostgreSQL",
+                        "name": "workshop_assets",
+                        "database": "workshop_assets",
+                        "username": "postgres_user",
+                        "password": "postgres_password",
+                        "group": "dagster_workshop"
+                    },
+                    {
+                        "previewLimit": 50,
+                        "server": "127.0.0.1",
+                        "port": 5432,
+                        "driver": "PostgreSQL",
+                        "name": "dagster_metadata",
+                        "database": "dagster_metadata",
+                        "username": "postgres_user",
+                        "password": "postgres_password",
+                        "group": "dagster_workshop"
+                    }
+                ]
+            },
+            // Add the IDs of extensions you want installed when the container is created.
+            "extensions": [
+                /* core & python*/
+                "ms-python.python",
+                /* db utils */
+                "mtxr.sqltools",
+                "mtxr.sqltools-driver-pg"
+            ],
+        }
+    }
+
+}

@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  dev:
+    container_name: dev
+    build:
+      context: ./..
+      dockerfile: .devcontainer/Dockerfile
+    image: pulpocon23-dagster:dev
+    volumes:
+      - ${LOCAL_WORKSPACE_FOLDER:-.}/..:/opt/pulpocon23-dagster:cached
+    command: sleep infinity
