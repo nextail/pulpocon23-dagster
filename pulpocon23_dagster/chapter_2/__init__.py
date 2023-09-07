@@ -2,8 +2,6 @@ from dagster import Definitions, FilesystemIOManager, load_assets_from_package_m
 from dagster_aws.s3 import S3Resource
 
 from . import assets as my_assets
-from .jobs.test_postgres import introspect_table_job
-from .resources import operational_data_repository
 from .resources.partitioned_numeric_time_series_postgres_io_manager import PartitionedNumericTimeSeriesPostgresIOManager
 from .resources.postgres_resource import PostgresResource
 from .resources.s3_json_io_manager import S3JsonIOManager
@@ -33,9 +31,7 @@ partitioned_numeric_time_series_postgres_io_manager = PartitionedNumericTimeSeri
 
 definitions = Definitions(
     assets=asset_definitions,
-    jobs=[introspect_table_job],
     resources={
-        "operational_data_repository": operational_data_repository,
         "io_manager": file_system_io_manager,
         "s3_json_io_manager": s3_json_io_manager,
         "postgres": postgres_resource,
