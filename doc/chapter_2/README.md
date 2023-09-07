@@ -13,7 +13,6 @@ In particular, you will
 - Materialize and refresh your assets responding to business needs
 - Attach visual meaning and context to the materialization of your assets
 - Configure orchestration and persistence details in a decoupled way from your business logic
-- Write automated tests for your business logic
 
 ## Context
 
@@ -64,7 +63,7 @@ Good luck!
 
    **Context**
 
-   The client wants to validate with you that you got the format of the integration files properly, calculating the future KPIs on the example operational data data.
+   The client wants to validate the calculation logic of their KPIs on the example operational data.
 
    ---
    **Assignment**
@@ -88,13 +87,13 @@ Good luck!
 
    **Context**
 
-   Your client wants to test your pipeline with "other files", but he did not tell you which ones yet.
+   Your client wants to test your pipeline with other files, but they did not tell you which ones yet.
 
    ---
    **Assignment**
 
-   - Make `operational_data` configurable, through a `source_data_path` parameter.
-   - Try out a few paths
+   - Make your `operational_data` asset configurable at run time, through a `source_data_path` parameter
+   - Try out materialization with a few different paths
      - `https://raw.githubusercontent.com/dfernandezcalle/stock-data/main/data/csv/2023-08-03/stock.csv`
      - `https://raw.githubusercontent.com/dfernandezcalle/stock-data/main/data/csv/2023-08-04/stock.csv`
 
@@ -160,7 +159,7 @@ Good luck!
    ---
    **Assignment**
 
-   - Try out your cousin's solution by incorporating it into your own assets. Make sure it persists value to the database (Check the SQL Tools connection configured in your Dev Container)
+   - Try out your cousin's solution by incorporating it into your own assets. Make sure it persists value to the database (check the SQL Tools connection configured in your Dev Container) on a few partitions
    - Remove the data manipulation boilerplate from your cousin's solution using `PartitionedNumericTimeSeriesPostgresIOManager`
 
    ---
@@ -169,6 +168,6 @@ Good luck!
 ## Wrap-up
 
 Congratulations! Through these assignments, you learned to
-- Iteratively define a collection of inter-related assets as software
+- Iteratively define as software a collection of inter-related assets
 - Manipulate and visualize your software-defined assets through a web interface
 - Flexibly change the persistence mechanisms of your assets
