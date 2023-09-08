@@ -1,0 +1,27 @@
+[project.urls]
+Homepage = "https://github.com/nextail/pulpocon23-dagster"
+
+[project]
+name = "pulpocon23_dagster"
+dynamic = ["version"]
+description = ""
+authors = [{ name = "Nextail" }]
+dependencies = [
+    "dagster==1.4.11",
+    "dagster-webserver",
+    "dagster-postgres",
+    "dagster-aws",
+    "pandas==2.0.3"
+]
+requires-python = ">=3.10, <3.11"
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.pdm.dev-dependencies]
+test = ["pytest>=7.3.1"]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra --ignore-glob=__pypackages__/** --ignore-glob=lib/__pypackages__/**"
