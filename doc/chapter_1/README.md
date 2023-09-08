@@ -4,11 +4,11 @@ During this first chapter you will learn basic concepts with simple definitions 
 
 ## Ops, Jobs & Graphs
 
-- **Op**: Core unit of computation, the tasks we want to execute. Contain the operations and should perform simple tasks such as executing a database query (to ingest or retrieve data), initiating a remote job (Spark, Python, etc.), or sending an event.
+- **Op**: Core unit of computation, the tasks we want to execute. It contains the operations and should perform simple tasks such as executing a database query (to ingest or retrieve data), initiating a remote job (Spark, Python, etc.), or sending an event.
 
 - **Graph**: Set of interconnected ops of sub-graphs, ops can be assembled into a graph to accomplish complex tasks.
 
-- **Job**: Main unit of execution and monitoring; instantiation of a Graph with configurations and parameters
+- **Job**: Main unit of execution and monitoring; instantiation of a Graph with configurations and parameters.
 
     ![op-job-graph](images/op_graph_job.svg)
 
