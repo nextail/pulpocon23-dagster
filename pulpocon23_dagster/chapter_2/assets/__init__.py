@@ -12,7 +12,7 @@ daily_partitioning = DailyPartitionsDefinition(
 )
 
 
-@asset(partitions_def=daily_partitioning)
+@asset(partitions_def=daily_partitioning, io_manager_key="s3_json_io_manager")
 def operational_data(
     context: AssetExecutionContext,
 ) -> pd.DataFrame:
@@ -29,7 +29,7 @@ def operational_data(
 
 
 # With basic managed-loading dependency (https://docs.dagster.io/concepts/assets/software-defined-assets#defining-basic-managed-loading-dependencies)
-@asset(partitions_def=daily_partitioning)
+@asset(partitions_def=daily_partitioning, io_manager_key="s3_json_io_manager")
 def revenue(context: AssetExecutionContext, operational_data: pd.DataFrame) -> float:
     value = float(
         operational_data["Sales"].sum()
@@ -43,6 +43,7 @@ def revenue(context: AssetExecutionContext, operational_data: pd.DataFrame) -> f
     ins={"upstream_operational_data": AssetIn(key=["operational_data"])},
     key="units_sold",  # default key (function name) can be overridden
     partitions_def=daily_partitioning,
+    io_manager_key="s3_json_io_manager",
 )
 def function_computing_units_sold(
     context: AssetExecutionContext, upstream_operational_data: pd.DataFrame
@@ -52,7 +53,7 @@ def function_computing_units_sold(
     return value
 
 
-@asset(partitions_def=daily_partitioning)
+@asset(partitions_def=daily_partitioning, io_manager_key="s3_json_io_manager")
 def average_sales_price(
     context: AssetExecutionContext, revenue: float, units_sold: int
 ) -> float:
