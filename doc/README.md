@@ -3,6 +3,7 @@
 In the course you will start to learn some basic concepts of Dagster with code examples and we will run the examples on the Dagster web server. We will continue with a practical case, where we will gradually add complexity.
 
 - [Introduction](#introduction)
+  - [What is Dagster](#what-is-dagster)
   - [Chapters](#chapters)
   - [Development Environment](#development-environment)
   - [How to Start](#how-to-start)
