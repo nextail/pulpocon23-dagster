@@ -40,7 +40,7 @@ def example_math_job():
     math_operations()
 ```
 
-[**Go to Dagster Webserver Job**](http://localhost:3000/locations/chapter-1-dagster_basics/jobs/example_math_job)
+[**Go to Dagster Webserver Job**](http://localhost:3000/locations/chapter-1-dagster_basics/jobs/math_job)
 
 **More Info**:
 
@@ -296,7 +296,7 @@ def example_math_job():
       recover_name_op()
   ```
 
-  [**Go to Dagster Webserver Job**](http://localhost:3000/locations/chapter%201%3A%20dagster's%20basics/jobs/recover_name_job/)
+  [**Go to Dagster Webserver Job**](http://localhost:3000/locations/chapter-1-dagster_basics/jobs/recover_name_job/)
 
   [**More info**](https://docs.dagster.io/concepts/configuration/config-schema#defining-and-accessing-configuration-for-an-op-or-asset)
 
