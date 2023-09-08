@@ -1,21 +1,24 @@
 import pandas as pd
-from dagster import AssetExecutionContext, AssetIn, Config, MarkdownMetadataValue, asset
-from pydantic import Field
+from dagster import (
+    AssetExecutionContext,
+    AssetIn,
+    DailyPartitionsDefinition,
+    MarkdownMetadataValue,
+    asset,
+)
+
+daily_partitioning = DailyPartitionsDefinition(
+    start_date="2023-08-08", end_date="2023-09-08"
+)
 
 
-class OperationalDataConfig(Config):
-    source_csv_path: str = Field(
-        description="The path to the source of a piece of operational data",
-        default="https://raw.githubusercontent.com/dfernandezcalle/stock-data/main/data/csv/2023-08-02/stock.csv",
-    )
-
-
-@asset
+@asset(partitions_def=daily_partitioning)
 def operational_data(
     context: AssetExecutionContext,
-    config: OperationalDataConfig,
 ) -> pd.DataFrame:
-    data = pd.read_csv(config.source_csv_path)
+    date = context.partition_key
+    source_path = f"https://raw.githubusercontent.com/dfernandezcalle/stock-data/main/data/csv/{date}/stock.csv"
+    data = pd.read_csv(source_path)
     context.add_output_metadata(
         {
             "num_records": len(data),
@@ -26,7 +29,7 @@ def operational_data(
 
 
 # With basic managed-loading dependency (https://docs.dagster.io/concepts/assets/software-defined-assets#defining-basic-managed-loading-dependencies)
-@asset
+@asset(partitions_def=daily_partitioning)
 def revenue(context: AssetExecutionContext, operational_data: pd.DataFrame) -> float:
     value = float(
         operational_data["Sales"].sum()
@@ -39,6 +42,7 @@ def revenue(context: AssetExecutionContext, operational_data: pd.DataFrame) -> f
 @asset(
     ins={"upstream_operational_data": AssetIn(key=["operational_data"])},
     key="units_sold",  # default key (function name) can be overridden
+    partitions_def=daily_partitioning,
 )
 def function_computing_units_sold(
     context: AssetExecutionContext, upstream_operational_data: pd.DataFrame
@@ -48,7 +52,7 @@ def function_computing_units_sold(
     return value
 
 
-@asset
+@asset(partitions_def=daily_partitioning)
 def average_sales_price(
     context: AssetExecutionContext, revenue: float, units_sold: int
 ) -> float:
