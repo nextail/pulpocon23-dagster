@@ -1,6 +1,6 @@
 from dagster import RunConfig, materialize
 
-from pulpocon23_dagster.chapter_1.examples.configuration import InputConfig, recover_name_asset
+from pulpocon23_dagster.chapter_1.configuration import InputConfig, recover_name_asset
 
 
 def test_asset_with_configuration():
