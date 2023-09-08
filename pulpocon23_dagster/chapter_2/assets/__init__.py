@@ -1,14 +1,21 @@
 import pandas as pd
-from dagster import AssetExecutionContext, AssetIn, MarkdownMetadataValue, asset
+from dagster import AssetExecutionContext, AssetIn, Config, MarkdownMetadataValue, asset
+from pydantic import Field
+
+
+class OperationalDataConfig(Config):
+    source_csv_path: str = Field(
+        description="The path to the source of a piece of operational data",
+        default="https://raw.githubusercontent.com/dfernandezcalle/stock-data/main/data/csv/2023-08-02/stock.csv",
+    )
 
 
 @asset
 def operational_data(
     context: AssetExecutionContext,
+    config: OperationalDataConfig,
 ) -> pd.DataFrame:
-    data = pd.read_csv(
-        "https://raw.githubusercontent.com/dfernandezcalle/stock-data/main/data/csv/2023-08-02/stock.csv"
-    )
+    data = pd.read_csv(config.source_csv_path)
     context.add_output_metadata(
         {
             "num_records": len(data),
