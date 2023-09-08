@@ -5,7 +5,7 @@ from pandas import DataFrame
 
 @asset(
     partitions_def=DailyPartitionsDefinition(start_date="2023-09-04"),
-    key_prefix=["example"],
+    key_prefix=["examples"],
     group_name="partitions",
 )
 def partition_asset(context) -> Output[DataFrame]:
