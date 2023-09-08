@@ -93,10 +93,16 @@ Good luck!
    ---
    **Assignment**
 
-   - Make your `operational_data` asset configurable at run time, through a `source_data_path` parameter
+   - Make your `operational_data` asset configurable at run time, through a `source_csv_path` parameter
    - Try out materialization with a few different paths
      - `https://raw.githubusercontent.com/dfernandezcalle/stock-data/main/data/csv/2023-08-03/stock.csv`
      - `https://raw.githubusercontent.com/dfernandezcalle/stock-data/main/data/csv/2023-08-04/stock.csv`
+
+    <details>
+    <summary>TIPS</summary>
+
+    - [Relevant section of the dagster documentation](https://docs.dagster.io/concepts/configuration/config-schema#using-software-defined-assets)
+    </details>
 
    ---
 
@@ -111,9 +117,9 @@ Good luck!
    ---
    **Assignment**
 
-   Introduce daily paritioning in your pipeline
-
-   > Test: Materialize a few partitions manually on upstream and downstream assets
+   - Wipe materialization of existing assets, you won't need that old example data anymore!
+   - Introduce daily partitioning in your pipeline, from `2023-08-08` to `2023-09-07`. The partitioning scheme is `https://raw.githubusercontent.com/dfernandezcalle/stock-data/main/data/csv/{date}/stock.csv`
+   - Materialize a few partitions manually on upstream and downstream assets
 
    <details>
    <summary>TIPS</summary>
@@ -133,16 +139,17 @@ Good luck!
 
    - Observe which format your materialized assets are currently stored (under the local `data/` folder)
    - Materialize all your assets in JSON format in S3 (S3 is represented as localstack in the project)
+   - Test: visualize the data in S3 using your web browser, under `{localstack_host}/dagster/`
 
-   > Test: visualize the data in S3 using your web browser, under localstack_host/dagster/
-   >
-   > (if you are executing dagster in your local machine, local stack host is `127.0.0.1:4566`, if you are executing it through codespaces, the host is exposed publicly, check out your codespace ports)
+         What is my `localstack_host`?
+         - `127.0.0.1:4566` if your are working from your local machine
+         - if you are executing from codespaces, the host is exposed publicly, check out your the endpoint exposed by your codespace for port 4566
 
 
    <details>
    <summary>TIPS</summary>
 
-   - There is an IO manager ready to take care of persistence for you under resources
+   - If you love working with `boto3` feel free, but there is an IO manager ready to take care of persistence for you, it might be of help!
 
    </details>
 

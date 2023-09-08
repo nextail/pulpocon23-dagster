@@ -1,8 +1,9 @@
 # Introduction
 
-In the course you will start to learn some basic concepts of Dagster with code examples and we will run the examples on the Dagster web server. We will continue with a practical case, where we will gradually add complexity.
+In this workshop you will start to learn some basic Dagster concepts with code examples and we will run the examples on the Dagster web server. We will continue with a practical case, where we will gradually add complexity.
 
 - [Introduction](#introduction)
+  - [What is Dagster](#what-is-dagster)
   - [Chapters](#chapters)
   - [Development Environment](#development-environment)
   - [How to Start](#how-to-start)
@@ -33,11 +34,11 @@ The course is divided into chapters:
 
 - [Chapter 1 - Dagster Basics](./chapter_1/README.md): learn basic concepts with simple definitions and examples to execute.
 
-- [Chapter 2 - Practical Case : The Retailer's KPIs](./chapter_2/README.md): follow the instructions of the practical case, you will build a data pipeline autonomously.
+- [Chapter 2 - Practical Case : The Retailer's KPIs](./chapter_2/README.md): following the instructions of the practical case, you will build a data pipeline autonomously.
 
 ## Development Environment
 
-In order to provide a simple working environment for the developer, the basic architecture of Dagster has been simplified. A `PostgreSQL` Docker image will be used as Storage and two Docker images for `Dagster's Daemon` and `Dagster Webserver`. There is no Docker container for the code as it is mounted as a shared volume in Dagster's containers. In this way it is not necessary to restart the container every time we want to reload the code in Dagster. We will only have to press the Reload button in `Dagster Webserver`. To facilitate the development of the integration with Amazon S3 we will use a `Localstack` container with the S3 service active.
+In order to provide a simple working environment for the attendee, the basic architecture of Dagster has been simplified. A `PostgreSQL` Docker image will be used as Storage and two Docker images for `Dagster's Daemon` and `Dagster Webserver`. There is no Docker container for the code as it is mounted as a shared volume in Dagster's containers. In this way it is not necessary to restart the container every time we want to reload the code in Dagster. We will only have to Reload Definitions from the `Dagster Webserver`. To facilitate the development of the integration with Amazon S3 we will use a `Localstack` container with the S3 service active.
 
 ![Docker Service Architecture](images/local_docker_env.svg)
 
@@ -64,7 +65,7 @@ The first thing we have to do is decide which work environment we want to use. O
     - `Git`
     - `VSCode`
     - `OS support`
-      - `Windows`
+      - `Windows (Docker with WSL2 backend is preferred over Hyper-V)` 
       - `macOs`
       - `Linux: Debian 9+, Ubuntu 20.04+, and downstream distros.`
   - **Benefits**:
@@ -100,7 +101,7 @@ The first thing we have to do is decide which work environment we want to use. O
 ### Start Github Codespace (Cloud)
 
 1. Go to the [Repository](https://github.com/nextail/pulpocon23_dagster).
-2. Click `<>Code`, then click `Codespaces` > `Your workspaces in the cloud` > `+`.
+2. Click `<> Code`, then click `Codespaces` > `Your workspaces in the cloud` > `+`.
   ![Create Codespace](images/codespace-1.png)
 3. Environment begins to be created
   ![Build Codespace](images/codespace-2.png)
