@@ -32,11 +32,11 @@ Good luck!
 
 ### General guidance
 
-- To create an asset, annotate the method implementing the materialization logic with the `@asset`
+- To create an asset, annotate the method implementing the materialization logic with `@asset`
 - All assets defined the `chapter_2.assets` package are automatically imported by dagster
-- To attach metadata to an asset, use the `add_output_metadata` method on the asset execution context within the materialization code.
+- To attach metadata to an asset materialization, use the `add_output_metadata` method on the `AssetExecutionContext` within the materialization code.
 - After modifying your assets, reload chapter 2 definitions from the dagster UI.
-- All the scaffolding around your asset is pre-written outside of the `chapter_2.assets` package
+- All the scaffolding around your asset is pre-written outside of the `chapter_2.assets` package, just focus your efforts on writing great data assets!
 
 ### Assignments
 
@@ -49,12 +49,13 @@ Good luck!
    ---
    **Assignment**
 
-   Create an `operational_data` asset (formatted as a pandas dataframe) attaching its number of records in the `num_records` metadata field.
+   Create an `operational_data` asset representing this piece of operational data, formatted as a pandas DataFrame. For visibility, add its number of records in the asset's `num_records` metadata field.
 
     <details>
     <summary>TIPS</summary>
 
     - To easily convert a csv from an url to a dataframe, you can use `pd.read_csv(csv_url)`
+    - Remember to add the `context: AssetExecutionContext` parameter to the asset materialization function. That's your ticket to adding metadata from within the function!
     </details>
 
    ---
@@ -63,7 +64,7 @@ Good luck!
 
    **Context**
 
-   The client wants to validate the calculation logic of their KPIs on the example operational data.
+   The client wants to validate your implementation of the calculation logic of their KPIs on the example operational data they provided you during the first Assignment.
 
    ---
    **Assignment**
@@ -78,7 +79,7 @@ Good luck!
     <details>
     <summary>TIPS</summary>
 
-    - A [simple sum on the dataframe's columns](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sum.html) should do the trick!
+    - A [simple sum on the dataframe's columns](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sum.html) should help!
     </details>
 
    ---
@@ -130,11 +131,12 @@ Good luck!
    ---
    **Assignment**
 
-   Materialize all your assets in JSON format in S3 (S3 is represented as localstack in the project)
+   - Observe which format your materialized assets are currently stored (under the local `data/` folder)
+   - Materialize all your assets in JSON format in S3 (S3 is represented as localstack in the project)
 
    > Test: visualize the data in S3 using your web browser, under localstack_host/dagster/
    >
-   > (if you are executing dagster in your local machine, local stack host is 127.0.0.1:4566, if you are executing it through codespaces, the host is exposed publicly, check out your codespace ports)
+   > (if you are executing dagster in your local machine, local stack host is `127.0.0.1:4566`, if you are executing it through codespaces, the host is exposed publicly, check out your codespace ports)
 
 
    <details>
