@@ -7,7 +7,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 # install PDM
 # Avoid pdm installation though pip in order to avoid conflicts when installing packages globally
 # Ref: https://github.com/pdm-project/pdm/issues/1388
-ARG PDM_VERSION=2.8.2
+ARG PDM_VERSION=2.9.1
 RUN curl -sSL https://raw.githubusercontent.com/pdm-project/pdm/${PDM_VERSION}/install-pdm.py | python3 - --version=${PDM_VERSION} --path /usr/local
 
 # set python env
