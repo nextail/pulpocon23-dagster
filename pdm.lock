@@ -6,7 +6,7 @@ groups = ["default", "test"]
 cross_platform = true
 static_urls = false
 lock_version = "4.3"
-content_hash = "sha256:eea9a6ec7437203118efea76fc352454c45a8138a09edc2cdcb495e9a045534d"
+content_hash = "sha256:411b6486abbd591e0c78889d93fe9d3a2e451b290e6c0645b71e99451e8ebb74"
 
 [[package]]
 name = "alembic"
@@ -59,22 +59,22 @@ files = [
 
 [[package]]
 name = "boto3"
-version = "1.28.42"
+version = "1.28.44"
 requires_python = ">= 3.7"
 summary = "The AWS SDK for Python"
 dependencies = [
-    "botocore<1.32.0,>=1.31.42",
+    "botocore<1.32.0,>=1.31.44",
     "jmespath<2.0.0,>=0.7.1",
     "s3transfer<0.7.0,>=0.6.0",
 ]
 files = [
-    {file = "boto3-1.28.42-py3-none-any.whl", hash = "sha256:734bf24b9240a366b4a0d7e37433ef01664a3568d8bb65be583cc2a4ed2947c5"},
-    {file = "boto3-1.28.42.tar.gz", hash = "sha256:9f36834a1a777002b4b4600415ced83bc62d42b9c36d8c75f5fc007a58d0ae17"},
+    {file = "boto3-1.28.44-py3-none-any.whl", hash = "sha256:c53c92dfe22489ba31e918c2e7b59ff43e2e778bd3d3559e62351a739382bb5c"},
+    {file = "boto3-1.28.44.tar.gz", hash = "sha256:eea3b07e0f28c9f92bccab972af24a3b0dd951c69d93da75227b8ecd3e18f6c4"},
 ]
 
 [[package]]
 name = "botocore"
-version = "1.31.42"
+version = "1.31.44"
 requires_python = ">= 3.7"
 summary = "Low-level, data-driven core of boto 3."
 dependencies = [
@@ -83,8 +83,8 @@ dependencies = [
     "urllib3<1.27,>=1.25.4",
 ]
 files = [
-    {file = "botocore-1.31.42-py3-none-any.whl", hash = "sha256:a51607e9f367e53768d37eacde244bc31dbaff4e7dde453cc772a8f75648f04a"},
-    {file = "botocore-1.31.42.tar.gz", hash = "sha256:cedf7d5eb55f120faadd56d3bced2139523479adb4df62c0c5ee5d46b2ffa836"},
+    {file = "botocore-1.31.44-py3-none-any.whl", hash = "sha256:83d61c1ca781e6ede19fcc4d5dd73004eee3825a2b220f0d7727e32069209d98"},
+    {file = "botocore-1.31.44.tar.gz", hash = "sha256:84f90919fecb4a4f417fd10145c8a87ff2c4b14d6381cd34d9babf02110b3315"},
 ]
 
 [[package]]
@@ -173,7 +173,7 @@ files = [
 
 [[package]]
 name = "dagster"
-version = "1.4.11"
+version = "1.4.12"
 summary = "Dagster is an orchestration platform for the development, production, and observation of data assets."
 dependencies = [
     "Jinja2",
@@ -206,31 +206,31 @@ dependencies = [
     "watchdog>=0.8.3",
 ]
 files = [
-    {file = "dagster-1.4.11-py3-none-any.whl", hash = "sha256:3bbe7eff9b5ff23aa854cd0e5847b6bd5d44220e4938a0c99ed0884ee44e421a"},
-    {file = "dagster-1.4.11.tar.gz", hash = "sha256:dbdfbe263105aa45bb6b2b74226610be138401aa560c0a80ee25ca8b8fb72dad"},
+    {file = "dagster-1.4.12-py3-none-any.whl", hash = "sha256:5667ccaec3cbccd98a6b64ca77bbb1577756a3822e105638be7516ca00a1aee4"},
+    {file = "dagster-1.4.12.tar.gz", hash = "sha256:ab01a1fa371dc1d76bce54d1f7d80166cfe56cc607e83d3f296fc2614368f191"},
 ]
 
 [[package]]
 name = "dagster-aws"
-version = "0.20.11"
+version = "0.20.12"
 summary = "Package for AWS-specific Dagster framework solid and resource components."
 dependencies = [
     "boto3",
-    "dagster==1.4.11",
+    "dagster==1.4.12",
     "packaging",
     "requests",
 ]
 files = [
-    {file = "dagster-aws-0.20.11.tar.gz", hash = "sha256:170505e4e0f9906dedcb13909d0c8917b8f9df68d81d5b687f0d361a2982394c"},
-    {file = "dagster_aws-0.20.11-py3-none-any.whl", hash = "sha256:0d40ed0434a4f7d334468f993ce4604c3db848984c1088253f91affaca627f2f"},
+    {file = "dagster-aws-0.20.12.tar.gz", hash = "sha256:1c8e38cdd9aa8f0eb64fc6866d7c7f3f59258c377bb0aed880516f5f31862d95"},
+    {file = "dagster_aws-0.20.12-py3-none-any.whl", hash = "sha256:6eee189a97d66a41be6a241d91cc54dbf6d328a5258b79f4f3bcd4ba623200f3"},
 ]
 
 [[package]]
 name = "dagster-graphql"
-version = "1.4.11"
+version = "1.4.12"
 summary = "The GraphQL frontend to python dagster."
 dependencies = [
-    "dagster==1.4.11",
+    "dagster==1.4.12",
     "gql[requests]>=3.0.0",
     "graphene>=3",
     "requests",
@@ -238,37 +238,37 @@ dependencies = [
     "urllib3<2.0.0",
 ]
 files = [
-    {file = "dagster-graphql-1.4.11.tar.gz", hash = "sha256:7dbc0340b765c454e9e61d877aec3bd7f0470ebca3f1f358f7b930977347c0b0"},
-    {file = "dagster_graphql-1.4.11-py3-none-any.whl", hash = "sha256:b96af8389d1c60fc6612f439e4c106c85b80a0d070ce2855d1cf81c2fa3c0e76"},
+    {file = "dagster-graphql-1.4.12.tar.gz", hash = "sha256:a2122515c293cf956886c13164e0d57e7bf83b7cb3deeabe18365f3f6db8b527"},
+    {file = "dagster_graphql-1.4.12-py3-none-any.whl", hash = "sha256:62f344488fb2bd5bfa84a6e0aabe1a396c03669f4d8de6c0ea32b6aff692e680"},
 ]
 
 [[package]]
 name = "dagster-postgres"
-version = "0.20.11"
+version = "0.20.12"
 summary = "A Dagster integration for postgres"
 dependencies = [
-    "dagster==1.4.11",
+    "dagster==1.4.12",
     "psycopg2-binary",
 ]
 files = [
-    {file = "dagster-postgres-0.20.11.tar.gz", hash = "sha256:6cf771384bf13f52d7d8e57d4741a37943772b9239db827ea69cb3a4479d5fd7"},
-    {file = "dagster_postgres-0.20.11-py3-none-any.whl", hash = "sha256:32531f1d8b1e00f9ab86ab2eb462211c669756e8084a5e330ecbb3728d5ae8f4"},
+    {file = "dagster-postgres-0.20.12.tar.gz", hash = "sha256:1c88fe57d81c7c947ed724592f686463a5f02e2c43c7772083d6bb4b95bc0ca3"},
+    {file = "dagster_postgres-0.20.12-py3-none-any.whl", hash = "sha256:bfe52313923a8652c3106845ee12cf2a01db4ace535b34c59a55f2914b40ea7a"},
 ]
 
 [[package]]
 name = "dagster-webserver"
-version = "1.4.11"
+version = "1.4.12"
 summary = "Web UI for dagster."
 dependencies = [
     "click<9.0,>=7.0",
-    "dagster-graphql==1.4.11",
-    "dagster==1.4.11",
+    "dagster-graphql==1.4.12",
+    "dagster==1.4.12",
     "starlette",
     "uvicorn[standard]",
 ]
 files = [
-    {file = "dagster_webserver-1.4.11-py3-none-any.whl", hash = "sha256:7128dfe02122abb7b557ea37a603684cfeee36ca8918bd80603b945c09122652"},
-    {file = "dagster_webserver-1.4.11.tar.gz", hash = "sha256:7c06a6c2978cc5e6e2f4e39c87e95e61378679efe05a3579fb85ca88d2ce7ff4"},
+    {file = "dagster_webserver-1.4.12-py3-none-any.whl", hash = "sha256:1c2dd46131d3031c2af1af091d7780560060986cf2d006566444200ab3b63f32"},
+    {file = "dagster_webserver-1.4.12.tar.gz", hash = "sha256:e8bce2cd82cd93f5504ee6fa225ad4a419de64ff1f0e6af3d5fd5ad13777a749"},
 ]
 
 [[package]]
@@ -400,20 +400,21 @@ files = [
     {file = "grpcio-1.58.0-cp310-cp310-musllinux_1_1_x86_64.whl", hash = "sha256:5b23d75e5173faa3d1296a7bedffb25afd2fddb607ef292dfc651490c7b53c3d"},
     {file = "grpcio-1.58.0-cp310-cp310-win32.whl", hash = "sha256:fad9295fe02455d4f158ad72c90ef8b4bcaadfdb5efb5795f7ab0786ad67dd58"},
     {file = "grpcio-1.58.0-cp310-cp310-win_amd64.whl", hash = "sha256:bc325fed4d074367bebd465a20763586e5e1ed5b943e9d8bc7c162b1f44fd602"},
+    {file = "grpcio-1.58.0.tar.gz", hash = "sha256:532410c51ccd851b706d1fbc00a87be0f5312bd6f8e5dbf89d4e99c7f79d7499"},
 ]
 
 [[package]]
 name = "grpcio-health-checking"
-version = "1.57.0"
+version = "1.58.0"
 requires_python = ">=3.6"
 summary = "Standard Health Checking Service for gRPC"
 dependencies = [
-    "grpcio>=1.57.0",
+    "grpcio>=1.58.0",
     "protobuf>=4.21.6",
 ]
 files = [
-    {file = "grpcio-health-checking-1.57.0.tar.gz", hash = "sha256:697fdae12d22646476e3e8bd9060ccf38ff132686107b308efebd5c704779f00"},
-    {file = "grpcio_health_checking-1.57.0-py3-none-any.whl", hash = "sha256:c0cc3f6e7420c8aebbdb11d7b2304a946645b9ddf861f87b6238ac35ffa966a9"},
+    {file = "grpcio-health-checking-1.58.0.tar.gz", hash = "sha256:07d58623f27becf186c862cbae7dfd7a54bd63f4b37594c77c8b8fc933f11c2f"},
+    {file = "grpcio_health_checking-1.58.0-py3-none-any.whl", hash = "sha256:ac7c268654df114ab32be5395fdbfd0d2c4510e7b7ef50189777b39de979249b"},
 ]
 
 [[package]]
@@ -629,17 +630,17 @@ files = [
 
 [[package]]
 name = "protobuf"
-version = "4.24.2"
+version = "4.24.3"
 requires_python = ">=3.7"
 summary = ""
 files = [
-    {file = "protobuf-4.24.2-cp310-abi3-win32.whl", hash = "sha256:58e12d2c1aa428ece2281cef09bbaa6938b083bcda606db3da4e02e991a0d924"},
-    {file = "protobuf-4.24.2-cp310-abi3-win_amd64.whl", hash = "sha256:77700b55ba41144fc64828e02afb41901b42497b8217b558e4a001f18a85f2e3"},
-    {file = "protobuf-4.24.2-cp37-abi3-macosx_10_9_universal2.whl", hash = "sha256:237b9a50bd3b7307d0d834c1b0eb1a6cd47d3f4c2da840802cd03ea288ae8880"},
-    {file = "protobuf-4.24.2-cp37-abi3-manylinux2014_aarch64.whl", hash = "sha256:25ae91d21e3ce8d874211110c2f7edd6384816fb44e06b2867afe35139e1fd1c"},
-    {file = "protobuf-4.24.2-cp37-abi3-manylinux2014_x86_64.whl", hash = "sha256:c00c3c7eb9ad3833806e21e86dca448f46035242a680f81c3fe068ff65e79c74"},
-    {file = "protobuf-4.24.2-py3-none-any.whl", hash = "sha256:3b7b170d3491ceed33f723bbf2d5a260f8a4e23843799a3906f16ef736ef251e"},
-    {file = "protobuf-4.24.2.tar.gz", hash = "sha256:7fda70797ddec31ddfa3576cbdcc3ddbb6b3078b737a1a87ab9136af0570cd6e"},
+    {file = "protobuf-4.24.3-cp310-abi3-win32.whl", hash = "sha256:20651f11b6adc70c0f29efbe8f4a94a74caf61b6200472a9aea6e19898f9fcf4"},
+    {file = "protobuf-4.24.3-cp310-abi3-win_amd64.whl", hash = "sha256:3d42e9e4796a811478c783ef63dc85b5a104b44aaaca85d4864d5b886e4b05e3"},
+    {file = "protobuf-4.24.3-cp37-abi3-macosx_10_9_universal2.whl", hash = "sha256:6e514e8af0045be2b56e56ae1bb14f43ce7ffa0f68b1c793670ccbe2c4fc7d2b"},
+    {file = "protobuf-4.24.3-cp37-abi3-manylinux2014_aarch64.whl", hash = "sha256:ba53c2f04798a326774f0e53b9c759eaef4f6a568ea7072ec6629851c8435959"},
+    {file = "protobuf-4.24.3-cp37-abi3-manylinux2014_x86_64.whl", hash = "sha256:f6ccbcf027761a2978c1406070c3788f6de4a4b2cc20800cc03d52df716ad675"},
+    {file = "protobuf-4.24.3-py3-none-any.whl", hash = "sha256:f6f8dc65625dadaad0c8545319c2e2f0424fede988368893ca3844261342c11a"},
+    {file = "protobuf-4.24.3.tar.gz", hash = "sha256:12e9ad2ec079b833176d2921be2cb24281fa591f0b119b208b788adc48c2561d"},
 ]
 
 [[package]]

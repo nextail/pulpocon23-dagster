@@ -7,7 +7,7 @@ dynamic = ["version"]
 description = ""
 authors = [{ name = "Nextail" }]
 dependencies = [
-    "dagster==1.4.11",
+    "dagster==1.4.12",
     "dagster-webserver",
     "dagster-postgres",
     "dagster-aws",
